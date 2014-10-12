@@ -1,7 +1,7 @@
 {
 	"name": "periodicjs.core.mailer",
 	"description": "nodemailer transport loader for periodicjs",
-	"version": "1.90.10",
+	"version": "1.90.15",
 	"main": "index.js",
 	"engines": {
 		"node": ">=0.10.x"
@@ -42,7 +42,9 @@
 		"wysiwyg",
 		"ui manager",
 		"CMS",
-		"CDS",
+		"email",
+		"nodemailer",
+		"sendgrid",
 		"Content Delivery System",
 		"Content Management System",
 		"Periodic Decoupled Framework"
