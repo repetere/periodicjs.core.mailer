@@ -20,8 +20,7 @@
 	},
 	"dependencies": {
 		"fs-extra": "0.9.1",
-    "nodemailer": "0.7.1",
-    "periodicjs.core.extensions": "~1.90.10"
+    "nodemailer": "0.7.1"
 	},
   "devDependencies": {
     "chai": "1.9.1",
