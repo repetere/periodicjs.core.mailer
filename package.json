@@ -1,51 +1,57 @@
 {
-	"name": "periodicjs.core.mailer",
-	"description": "nodemailer transport loader for periodicjs",
-	"version": "1.90.15",
-	"main": "index.js",
-	"engines": {
-		"node": ">=0.10.x"
-	},
-	"author": {
-		"name": "Yaw Joseph Etse",
-		"email": "yaw.etse@gmail.com",
-		"url": "http://about.me/yawjosephetse"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/typesettin/periodicjs.core.mailer.git"
-	},
-	"scripts": {
-		"test": "mocha -R spec --recursive"
-	},
-	"dependencies": {
-		"fs-extra": "0.9.1",
-    "nodemailer": "0.7.1"
-	},
+  "name": "periodicjs.core.mailer",
+  "description": "nodemailer transport loader for periodicjs",
+  "version": "3.0.0",
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10.x"
+  },
+  "author": {
+    "name": "Yaw Joseph Etse",
+    "email": "yaw.etse@gmail.com",
+    "url": "http://about.me/yawjosephetse"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/typesettin/periodicjs.core.mailer.git"
+  },
+  "scripts": {
+    "test": "mocha -R spec --recursive"
+  },
+  "dependencies": {
+    "fs-extra": "0.12.0",
+    "nodemailer": "1.3.0",
+    "nodemailer-html-to-text": "^1.0.0",
+    "nodemailer-mailgun-transport": "0.0.1",
+    "nodemailer-sendgrid-transport": "^0.1.0",
+    "nodemailer-sendmail-transport": "^1.0.0",
+    "nodemailer-ses-transport": "^1.2.0",
+    "nodemailer-smtp-pool": "^0.1.8",
+    "nodemailer-stub-transport": "^0.1.4"
+  },
   "devDependencies": {
-    "chai": "1.9.1",
+    "chai": "1.10.0",
     "grunt": ">=0.4.5",
     "grunt-contrib-jshint": ">=0.4.3",
     "grunt-contrib-watch": ">=0.4.1",
     "grunt-jsbeautifier": ">=0.2.7",
-    "grunt-jsdoc": ">=0.5.6",
-    "jsdoc": "3.3.0-alpha5",
+    "grunt-jsdoc": ">=0.5.7",
+    "jsdoc": "3.3.0-alpha10",
     "grunt-newer": ">=0.7.0",
     "grunt-simple-mocha": ">=0.4.0",
-    "jsdoc": "3.3.0-alpha5",
-    "mocha": "1.9.0"
+    "mocha": "2.0.1"
   },
-	"keywords": [
-		"content management framework",
-		"typeset",
-		"wysiwyg",
-		"ui manager",
-		"CMS",
-		"email",
-		"nodemailer",
-		"sendgrid",
-		"Content Delivery System",
-		"Content Management System",
-		"Periodic Decoupled Framework"
-	]
+  "keywords": [
+    "content management framework",
+    "typeset",
+    "wysiwyg",
+    "ui manager",
+    "CMS",
+    "email",
+    "nodemailer",
+    "sendgrid",
+    "Content Delivery System",
+    "Content Management System",
+    "Periodic Decoupled Framework"
+  ]
 }
