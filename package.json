@@ -1,7 +1,7 @@
 {
   "name": "periodicjs.core.mailer",
   "description": "nodemailer transport loader for periodicjs",
-  "version": "10.0.0",
+  "version": "10.0.1",
   "main": "index.js",
   "engines": {
     "node": "^6.x"
