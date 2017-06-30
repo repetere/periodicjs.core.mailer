@@ -1,4 +1,4 @@
-# periodicjs.core.mailer [![Coverage Status](https://coveralls.io/repos/github/typesettin/periodicjs.core.mailer/badge.svg?branch=master)](https://coveralls.io/github/typesettin/periodicjs.core.mailer?branch=master)
+# periodicjs.core.mailer [![Coverage Status](https://coveralls.io/repos/github/typesettin/periodicjs.core.mailer/badge.svg?branch=master)](https://coveralls.io/github/typesettin/periodicjs.core.mailer?branch=master) [![Build Status](https://travis-ci.org/typesettin/periodicjs.core.mailer.svg?branch=master)](https://travis-ci.org/typesettin/periodicjs.core.mailer)
 
 Periodic's Code mailer module exports a single function that asynchronously returns a node mailer transport to send transactional emails with.
 
