@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>JSDoc: Source: mailer.js</title>
-    
+
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
     <!--[if lt IE 9]>
@@ -16,69 +16,94 @@
 <body>
 
 <div id="main">
-    
+
     <h1 class="page-title">Source: mailer.js</h1>
+
     
-    
+
 
 
     
     <section>
         <article>
-            <pre class="prettyprint source"><code>/*
- * periodic
- * http://github.com/typesettin/periodic
- *
- * Copyright (c) 2014 Yaw Joseph Etse. All rights reserved.
- */
-
-
-'use strict';
-
-var path = require('path'),
-		fs = require('fs-extra'),
-		nodemailer = require('nodemailer');
+            <pre class="prettyprint source linenums"><code>'use strict';
+const getEmailTemplateHTMLString = require('./getEmailTemplateHTMLString');
+const getTransport = require('./getTransport');
+const sendEmail = require('./sendEmail');
+const ejs = require('ejs');
 
 /**
- * A module that represents a extension manager.
- * @{@link https://github.com/typesettin/periodic}
- * @author Yaw Joseph Etse
- * @copyright Copyright (c) 2014 Typesettin. All rights reserved.
- * @license MIT
- * @exports getTransport
- * @requires module:fs-extra
- * @requires module:nodemailer
- * @requires module:periodicjs.core.extensions
- * @requires module:path
- * @throws {Error} If missing transport configuration file from periodicjs.ext.mailer extension
- * @todo to do later
+ * a mailer class for periodic that sends mail using nodemailer
+ * 
+ * @class Mailer
  */
-
-exports.getTransport = function(options,callback){
-
-	var transportJsonFile = path.resolve(process.cwd(),'content/config/extensions','periodicjs.ext.mailer','./transport.json'),
-			transportObject = {
-				transportType : 'direct',
-				transportOptions : {debug:true}
-			},
-		appenvironment = options.appenvironment;
-
-	fs.readJson(transportJsonFile, function(err, transportJSON) {
-		if(err){
-			callback(err,null);
-		}
-		else{
-
-			if(transportJSON[appenvironment]){
-				transportObject = transportJSON[appenvironment];
-					callback(null,nodemailer.createTransport(transportObject.type,transportObject.transportoptions));
-			}
-			else{
-				callback(new Error('Invalid transport configuration, no transport for env: '+appenvironment),null);
-			}
-		}
-	});
-};</code></pre>
+class Mailer {
+  /**
+   * Creates an instance of Mailer.
+   * @param {any} [options={}] 
+   * 
+   * @memberof Mailer
+   */
+  constructor(options = {}) {
+    this.config = Object.assign({
+      transportConfig: {
+        type: 'stub',
+        transportoptions: {
+          debug: true,
+          args: ['-t', '-i']
+        }
+      },
+    }, options.config);
+    this.transport = options.transport;
+    this.getEmailTemplateHTMLString = getEmailTemplateHTMLString.bind(this);
+    this.getTransport = getTransport.bind(this);
+    this.sendEmail = sendEmail.bind(this);
+    return this;
+  }
+  /**
+   * reads a filepath and returns the email template string (will use EJS to render later by default)
+   * 
+   * @static
+   * 
+   * @memberof Mailer
+   */
+  static getEmailTemplateHTMLString(options) {
+    return getEmailTemplateHTMLString(options);
+  }
+  /**
+   * returns a node mailer transport based off of a json configuration
+   * 
+   * @static
+   * 
+   * @memberof Mailer
+   */
+  static getTransport(options) {
+    return getTransport(options);
+  }
+  /**
+   * sends email with nodemailer
+   * 
+   * @static
+   * @param {any} [options={}] all of the options to a node mailer transport sendMail function
+   * @param {object|string} options.to 
+   * @param {object|string} options.cc
+   * @param {object|string} options.bcc 
+   * @param {object|string} options.replyto 
+   * @param {object|string} options.subject 
+   * @param {object|string} options.html 
+   * @param {object|string} options.text 
+   * @param {object|string} options.generateTextFromHTML 
+   * @param {object|string} options.emailtemplatestring 
+   * @param {object|string} options.emailtemplatedata 
+   * @returns {promise} resolves the status of an email
+   * 
+   * @memberof Mailer
+   */
+  static sendEmail(options){
+    return sendEmail(options);
+  }
+}
+module.exports = Mailer;</code></pre>
         </article>
     </section>
 
@@ -88,13 +113,13 @@ exports.getTransport = function(options,callback){
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="module-getTransport.html">getTransport</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Mailer.html">Mailer</a></li><li><a href="Mailer.Mailer.html">Mailer</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getEmailTemplateHTMLString">getEmailTemplateHTMLString</a></li><li><a href="global.html#getTransport">getTransport</a></li><li><a href="global.html#transportMap">transportMap</a></li></ul>
 </nav>
 
-<br clear="both">
+<br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Mon Oct 13 2014 11:45:02 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Fri Jun 30 2017 17:16:58 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>
