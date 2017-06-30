@@ -27,17 +27,25 @@ var CoreMailer = require('periodicjs.core.mailer'),
   },
   emailtransport;
 
-  CoreMailer.getTransport({
-    appenvironment: 'development'
-  }, function (err, transport) {
-    if (err) {
-      console.error(err);
-    }
-    else {
-      emailtransport = transport;
-      emailtransport.sendMail(sampleemail,function(err,result){console.log("err",err,"result",result)})
-    }
+  //instance methods
+  const newCoreMailer = new CoreMailer({ 
+    config: { 
+      transportConfig: {
+        type: 'stub',
+        transportoptions: {
+          debug: true,
+          args: ['-t', '-i']
+        },
+      },
+    },
   });
+  newCoreMailer.sendEmail(sampleemail)
+  .then(console.log)
+  .catch(console.error);
+  //static methods
+  CoreMailer.sendEmail(sampleemail)
+  .then(console.log)
+  .catch(console.error);
 
 //example transports
 const sendmailTransportExample = {
@@ -81,7 +89,12 @@ const transports = {
 ## API
 
 ```javascript
-CoreMailer.getTransport(options,callback); //callback(err,nodemailertransport);
+//options.emailtemplatefilepath
+CoreMailer.getEmailTemplateHTMLString(options); //Promise.resolve(templateString);
+//options.transportObject.transportType, options.transportObject.transportOptions
+CoreMailer.getTransport(options); //Promise.resolve(nodemailertransport); 
+//options.to, options.from, options.html, options.subject, etc
+CoreMailer.sendEmail(options); //Promise.resolve(emailstatus);
 ```
 ## Development
 *Make sure you have grunt installed*
@@ -89,9 +102,9 @@ CoreMailer.getTransport(options,callback); //callback(err,nodemailertransport);
 $ npm install -g grunt-cli
 ```
 
-Then run grunt watch
+For tests
 ```
-$ grunt watch
+$ grunt test && grunt coveralls
 ```
 For generating documentation
 ```
