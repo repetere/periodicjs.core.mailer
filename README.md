@@ -18,27 +18,64 @@ This is a part of Periodic's core.
 *JavaScript*
 ```javascript
 var CoreMailer = require('periodicjs.core.mailer'),
-	sampleemail ={
-		to: "user@example.com",
-		cc: "service@example.com",
-		subject: "sample email test",
-		generateTextFromHTML: true,
-		html: "<h1>Welcome User</h1><p>email rocks</p>"
-	},
-	emailtransport;
+  sampleemail ={
+    to: "user@example.com",
+    cc: "service@example.com",
+    subject: "sample email test",
+    generateTextFromHTML: true,
+    html: "<h1>Welcome User</h1><p>email rocks</p>"
+  },
+  emailtransport;
 
-	CoreMailer.getTransport({
-		appenvironment: 'development'
-	}, function (err, transport) {
-		if (err) {
-			console.error(err);
-		}
-		else {
-			emailtransport = transport;
-			emailtransport.sendMail(sampleemail,function(err,result){console.log("err",err,"result",result)})
-		}
-	});
+  CoreMailer.getTransport({
+    appenvironment: 'development'
+  }, function (err, transport) {
+    if (err) {
+      console.error(err);
+    }
+    else {
+      emailtransport = transport;
+      emailtransport.sendMail(sampleemail,function(err,result){console.log("err",err,"result",result)})
+    }
+  });
+
+//example transports
+const sendmailTransportExample = {
+  "type":"sendmail",
+  "transportoptions":{
+    "debug":true,
+    "args":["-t","-i"]
+  }
+};
+const SMTPTransportExample = {
+  "type":"SMTP",
+  "transportoptions":{
+    "service": "SendGrid",
+    "auth": {
+      "user": "username",
+      "pass": "password"
+    }
+  }
+};
+const SESTransportExample = {
+  "type":"ses",
+  "transportoptions":{
+    "accessKeyId": "ACCESSKEYID",
+    "secretAccessKey": "SECRETACCESSKEY"
+  }
+};
+//all types:
+const transports = {
+  ses,
+  sendmail: sendmailTransport,
+  'smtp-pool': smtpPool,
+  sendgrid: sgTransport,
+  mailgun: mgTransport,
+  stub: stubTransport,
+  direct: directTransport,
+}
 ```
+
 
 
 ## API
