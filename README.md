@@ -41,12 +41,12 @@ var CoreMailer = require('periodicjs.core.mailer'),
 ```
 
 
-##API
+## API
 
 ```javascript
 CoreMailer.getTransport(options,callback); //callback(err,nodemailertransport);
 ```
-##Development
+## Development
 *Make sure you have grunt installed*
 ```
 $ npm install -g grunt-cli
@@ -62,5 +62,5 @@ $ grunt doc
 $ jsdoc2md lib/**/*.js > doc/api.md
 ```
 
-##Notes
+## Notes
 * Check out https://github.com/typesettin/periodicjs for the full Periodic Documentation
