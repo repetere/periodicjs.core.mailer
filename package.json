@@ -1,7 +1,7 @@
 {
   "name": "periodicjs.core.mailer",
   "description": "nodemailer transport loader for periodicjs",
-  "version": "10.0.2",
+  "version": "10.0.3",
   "main": "index.js",
   "engines": {
     "node": "^6.x"
@@ -11,13 +11,11 @@
     "email": "yaw.etse@gmail.com",
     "url": "http://about.me/yawjosephetse"
   },
-  "contributors": [
-    {
-      "name": "Jan Bialostok",
-      "email": "janbialostok@gmail.com",
-      "url": "https://github.com/janbialostok"
-    }
-  ],
+  "contributors": [{
+    "name": "Jan Bialostok",
+    "email": "janbialostok@gmail.com",
+    "url": "https://github.com/janbialostok"
+  }],
   "repository": {
     "type": "git",
     "url": "git://github.com/typesettin/periodicjs.core.mailer.git"
@@ -84,12 +82,10 @@
     "url": "https://github.com/typesettin/periodicjs.core.mailer/issues"
   },
   "homepage": "https://github.com/typesettin/periodicjs.core.mailer",
-  "maintainers": [
-    {
-      "name": "yawetse",
-      "email": "yaw.etse@gmail.com"
-    }
-  ],
+  "maintainers": [{
+    "name": "yawetse",
+    "email": "yaw.etse@gmail.com"
+  }],
   "dist": {
     "shasum": "5b08fc30db00722c57d4cdcc0aef57a9ad07a142",
     "tarball": "http://registry.npmjs.org/periodicjs.core.mailer/-/periodicjs.core.mailer-4.0.0.tgz"
